@@ -30,7 +30,7 @@ export const options = {
       beginAtZero: true,
       ticks: {
         // Define uma função de formatação personalizada para o eixo Y
-        callback: (value: any) => `R$ ${value.toFixed(2).replace('.', ',')}`, // Formata como "R$ X.XX"
+        callback: (value: any) => `R$ ${value.toFixed(2).replace('.', ',')}`, // Formata como "R$ XX,X"
       },
     },
   },
@@ -40,12 +40,13 @@ export const options = {
     },
     title: {
       display: true,
-      text: 'Chart.js Bar Chart',
+      text: 'PRODUCTS SELLS CHART',
     },
     
   },
 };
 
+// MOCKUPS TEMPORARIOS ENQUANTO NÃO FOI PERSISTIDO O DADO DO BANCO
 const labels = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
 export const data = {
   labels,
