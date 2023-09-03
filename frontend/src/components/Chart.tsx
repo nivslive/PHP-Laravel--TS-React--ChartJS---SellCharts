@@ -113,11 +113,8 @@ export default function Chart() {
         if(selector.data.byYear[selector.selectedData] !== undefined) {
           setChartData(selector.data.byYear[selector.selectedData])
         }
-        // console.log(, selector.selectedData, 'selectedData')
-        // // 
       }
     }
-    console.log(chartData, 'chartData', selector.selectedData)
-  }, [selector.selectedData]);
+  }, [selector.data.byYear, selector.selectedData]);
   return (<Bar options={options} data={chartData} />);
 }

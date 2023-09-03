@@ -7,15 +7,13 @@ export default function SelectChartData() {
   const [selectedOption, setSelectedOption] = useState('all'); // Valor padrão: "all" para "Todos os anos"
   const dispatch = useDispatch();
   const selector = useSelector((store:any) => store.chart)
-  useEffect(() => {
-  console.log(selector, 'selector');
-  }, [selectedOption]);
+  // useEffect(() => {
+  // console.log(selector, 'selector');
+  // }, [selectedOption]);
 
   const handleSelectChange = (e: any) => {
-    setSelectedOption(e.target.value);
     dispatch(chartActions.putSelectedData(e.target.value));
-    const urlPath: string = `http://localhost/api/sells/${(selectedOption === 'all' || selectedOption === '') ? 'all' : 'year/' + selectedOption}`;
-    console.log(urlPath, 'urlPath')
+    const urlPath: string = `http://localhost/api/sells/${(e.target.value === 'all' || e.target.value === '') ? 'all' : 'year/' + e.target.value}`;
     axios.get(urlPath)
         .then(( response : AxiosResponse ) => {
           // Processar os dados da resposta da API
@@ -47,11 +45,10 @@ export default function SelectChartData() {
             ],
           }
 
-          if(selectedOption === 'all') {
+          if(e.target.value === 'all') {
             dispatch(chartActions.putAllData(updatedData));
           } else {
-            console.log({data: updatedData, year: selectedOption}, 'by year')
-            dispatch(chartActions.putDataByYear({data: updatedData, year: selectedOption}));
+            dispatch(chartActions.putDataByYear({data: updatedData, year: e.target.value}));
           }
 
         })
