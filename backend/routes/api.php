@@ -20,7 +20,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::prefix('/sells')->controller(SellController::class)->group(function() {
-    Route::get('/all', 'get_all_sales_by_month');
-    Route::get('/{month}/{year}', 'count_all_price_sells_by_period');
+    Route::get('/all', 'get_sales_by_all_times');
+    Route::get('/year/{year}', 'get_sales_by_year');
+    // Route::get('/{month}/{year}', 'count_all_price_sells_by_period');
     // Route::get('/', 'count_all_price_sells_by_period');
 });
