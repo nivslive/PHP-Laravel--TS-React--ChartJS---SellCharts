@@ -12,6 +12,7 @@ export default function SelectChartData() {
   // }, [selectedOption]);
 
   const handleSelectChange = (e: any) => {
+    setSelectedOption(e.target.value);
     dispatch(chartActions.putSelectedData(e.target.value));
     const urlPath: string = `http://localhost/api/sells/${(e.target.value === 'all' || e.target.value === '') ? 'all' : 'year/' + e.target.value}`;
     axios.get(urlPath)
