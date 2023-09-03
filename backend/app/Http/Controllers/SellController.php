@@ -53,7 +53,9 @@ class SellController extends Controller
     
         $totalPrices = $salesByYear->pluck('total_price')->toArray();
         $productCounts = $salesByYear->pluck('product_count')->toArray();
-        $years = $salesByYear->pluck('year')->toArray();
+        $periods = $salesByYear->map(function ($item) {
+            return sprintf('%02d/%02d', $item->month, $item->year);
+        })->toArray();
     
         // Obter projeções de lucro
         $sellForecasts = SellForecast::select('price')->get()->pluck('price')->toArray();
@@ -62,7 +64,7 @@ class SellController extends Controller
             'sales_by_year' => $salesByYear,
             'total_price_sells' => $totalPrices,
             'product_counts' => $productCounts,
-            'years' => $years,
+            'periods' => $periods,
             'sell_forecasts' => $sellForecasts,
         ]);
     }

@@ -11,6 +11,8 @@ import { Bar } from 'react-chartjs-2';
 import { faker } from '@faker-js/faker';
 import { useEffect, useState } from 'react';
 import axios, { AxiosResponse } from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+import { chartActions } from '../store/chart-slice';
 
 ChartJS.register(
   CategoryScale,
@@ -58,39 +60,64 @@ export const data = {
 
 export default function Chart() {
   const [chartData, setChartData] = useState(data);
+  const selector = useSelector((store: any) => store.chart);
+  const dispatch = useDispatch();
   useEffect(() => {
-    axios.get('http://localhost/api/sells/all')
+    if(selector.selectedData === '') {
+      axios.get('http://localhost/api/sells/all')
       .then(( response : AxiosResponse ) => {
         // Processar os dados da resposta da API
-        const apiData: { periods: string[]; total_price_sells: number[]; sell_forecasts: number[], product_counts: number[] } = response.data;
+        const apiData: 
+          { periods: string[]; 
+            total_price_sells: number[]; 
+            sell_forecasts: number[], 
+            product_counts: number[] 
+          } = response.data;
+
+          console.log(apiData)
+        
         // Atualizar os dados do gráfico com os dados da API
         const updatedData = {
           labels: apiData.periods,
           datasets: [
             {
               label: 'Vendas realizadas',
-              data: apiData.total_price_sells, // Substitua com os dados corretos da API
+              data: apiData.total_price_sells,
               backgroundColor: 'green',
             },
             {
               label: 'Venda prevista',
-              data: apiData.sell_forecasts, // Substitua com os dados corretos da API
+              data: apiData.sell_forecasts,
               backgroundColor: 'blue',
             },
             {
               label: 'Quantidade de produtos vendidos',
-              data: apiData.product_counts, // Substitua com os dados corretos da API
+              data: apiData.product_counts,
               backgroundColor: 'red',
             },
           ],
         };
 
         setChartData(updatedData);
-        console.log(chartData)
+        dispatch(chartActions.putAllData(updatedData));
       })
       .catch((error) => {
         console.error('Erro ao buscar dados da API:', error);
       });
-  }, []);
+    }
+    else {
+      console.log('cheguei aq', selector)
+      if(selector.selectedData === 'all') {
+        setChartData(selector.data.all)
+      } else {
+        if(selector.data.byYear[selector.selectedData] !== undefined) {
+          setChartData(selector.data.byYear[selector.selectedData])
+        }
+        // console.log(, selector.selectedData, 'selectedData')
+        // // 
+      }
+    }
+    console.log(chartData, 'chartData', selector.selectedData)
+  }, [selector.selectedData]);
   return (<Bar options={options} data={chartData} />);
 }
