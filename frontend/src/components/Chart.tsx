@@ -25,6 +25,15 @@ ChartJS.register(
 
 export const options = {
   responsive: true,
+  scales: {
+    y: {
+      beginAtZero: true,
+      ticks: {
+        // Define uma função de formatação personalizada para o eixo Y
+        callback: (value: any) => `R$ ${value.toFixed(2).replace('.', ',')}`, // Formata como "R$ X.XX"
+      },
+    },
+  },
   plugins: {
     legend: {
       position: 'top' as const,
@@ -33,6 +42,7 @@ export const options = {
       display: true,
       text: 'Chart.js Bar Chart',
     },
+    
   },
 };
 
