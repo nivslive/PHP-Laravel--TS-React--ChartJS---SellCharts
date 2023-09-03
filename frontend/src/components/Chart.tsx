@@ -106,7 +106,6 @@ export default function Chart() {
       });
     }
     else {
-      console.log('cheguei aq', selector)
       if(selector.selectedData === 'all') {
         setChartData(selector.data.all)
       } else {
