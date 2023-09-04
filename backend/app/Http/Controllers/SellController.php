@@ -72,6 +72,7 @@ class SellController extends Controller
     }
 
 
+    // EXPERIMENTS AND TESTS
     // public function count_all_price_sells_by_year($year) {
     //     $startDate = Carbon::create($year, 1, 1, 0, 0, 0)->startOfYear();
     //     $endDate = $startDate->copy()->endOfYear();
