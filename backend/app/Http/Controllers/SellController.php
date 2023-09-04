@@ -5,11 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\{Sell, SellForecast};
 use Carbon\{Carbon};
-
+use Illuminate\Http\JsonResponse;
+use Illuminate\Database\Eloquent\Collection;
 class SellController extends Controller
 {
     
-    public function get_sales($perYear = false, $year = null) {
+    public function get_sales($perYear = false, $year = null): Collection {
         if(!$perYear) {
             return Sell::selectRaw('YEAR(created_at) as year, MONTH(created_at) as month, SUM(price) as total_price, COUNT(*) as product_count')
                 ->groupBy('year', 'month')
@@ -26,7 +27,7 @@ class SellController extends Controller
             ->get();
     }
 
-    public function get_sales_by_all_times() {
+    public function get_sales_by_all_times(): JsonResponse {
         $sales = $this->get_sales();
         $totalPrices = $sales->pluck('total_price')->toArray();
         $productCounts = $sales->pluck('product_count')->toArray();
@@ -49,7 +50,7 @@ class SellController extends Controller
     }
 
 
-    public function get_sales_by_year($year) {
+    public function get_sales_by_year($year): JsonResponse {
         $salesByYear = $this->get_sales(perYear: true, year: $year);
     
         $totalPrices = $salesByYear->pluck('total_price')->toArray();
