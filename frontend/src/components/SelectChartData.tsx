@@ -60,7 +60,7 @@ export default function SelectChartData() {
 
   return (
     <div>
-      <label htmlFor="yearSelect">Selecione um ano:</label>
+      <label style={{paddingRight: 20}} htmlFor="yearSelect">Selecione um ano:</label>
       <select
         id="yearSelect"
         value={selectedOption}
