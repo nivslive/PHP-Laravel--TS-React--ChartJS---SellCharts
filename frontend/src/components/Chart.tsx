@@ -46,7 +46,7 @@ export const options = {
   },
 };
 
-// MOCKUPS TEMPORARIOS ENQUANTO NÃO FOI PERSISTIDO O DADO DO BANCO
+// MOCKUPS TEMPORARIOS ENQUANTO NÃO FOI RETORNADO O DADO DO BANCO
 const labels = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
 export const data = {
   labels,

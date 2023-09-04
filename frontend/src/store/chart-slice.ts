@@ -1,8 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit'
 
+interface IData {
+    all: Object,
+    byYear: any,
+}
 
 interface IIntialState {
-    data: any,
+    data: IData,
     selectedData: string,
 }
 
