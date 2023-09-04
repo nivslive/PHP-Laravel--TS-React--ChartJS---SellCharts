@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
            ProductSeeder::class,
         ]);
-        
+
         // \App\Models\User::factory(10)->create();
         $product = \App\Models\Product::factory()->create([ 
             'name' => 'test',
@@ -50,6 +50,25 @@ class DatabaseSeeder extends Seeder
             'price' => 250.50,
             'created_at' => '2022-04-31 22:00:58',
         ]);
+
+        \App\Models\Sell::create([
+            'product_id' => $product->id,
+            'price' => 250.50,
+            'created_at' => '2021-03-31 22:00:58',
+        ]);
+
+        \App\Models\Sell::create([
+            'product_id' => $product->id,
+            'price' => 250.50,
+            'created_at' => '2021-05-31 22:00:58',
+        ]);
+
+        \App\Models\Sell::create([
+            'product_id' => $product->id,
+            'price' => 250.50,
+            'created_at' => '2021-02-31 22:00:58',
+        ]);
+
 
 
         \App\Models\SellForecast::create([

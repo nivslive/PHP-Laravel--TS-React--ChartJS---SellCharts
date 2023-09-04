@@ -18,10 +18,11 @@ class SellController extends Controller
                 ->get();
         }
 
-        return Sell::selectRaw('YEAR(created_at) as year, SUM(price) as total_price, COUNT(*) as product_count')
+        return Sell::selectRaw('YEAR(created_at) as year, MONTH(created_at) as month, SUM(price) as total_price, COUNT(*) as product_count')
             ->whereRaw('YEAR(created_at) = ?', [$year])
-            ->groupBy('year')
+            ->groupBy('year', 'month')
             ->orderBy('year', 'asc')
+            ->orderBy('month', 'asc')
             ->get();
     }
 
