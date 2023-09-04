@@ -24,19 +24,19 @@ class DatabaseSeeder extends Seeder
         ]);
 
         // TODAY'S SELLS
-        \App\Models\Sell::create([
+        \App\Models\Sell::factory()->create([
             'product_id' => $product->id,
             'price' => 250.50,
         ]);
 
         // 2022 SELLS
-        \App\Models\Sell::create([
+        \App\Models\Sell::factory()->create([
             'product_id' => $product->id,
             'price' => 250.50,
             'created_at' => '2022-05-31 22:00:58',
         ]);
 
-        \App\Models\Sell::create([
+        \App\Models\Sell::factory()->create([
             'product_id' => $product->id,
             'price' => 250.50,
             'created_at' => '2022-04-31 22:00:58',
@@ -44,7 +44,7 @@ class DatabaseSeeder extends Seeder
 
 
         // 2021 SELLS
-        \App\Models\Sell::create([
+        \App\Models\Sell::factory()->create([
             'product_id' => $product->id,
             'price' => 250.50,
             'created_at' => '2021-03-31 22:00:58',
@@ -56,7 +56,7 @@ class DatabaseSeeder extends Seeder
             'created_at' => '2021-05-31 22:00:58',
         ]);
 
-        \App\Models\Sell::create([
+        \App\Models\Sell::factory()->create([
             'product_id' => $product->id,
             'price' => 250.50,
             'created_at' => '2021-02-31 22:00:58',
@@ -64,37 +64,37 @@ class DatabaseSeeder extends Seeder
 
 
         // 2020 SELLS
-        \App\Models\Sell::create([
+        \App\Models\Sell::factory()->create([
             'product_id' => $product->id,
             'price' => 250.50,
             'created_at' => '2020-03-31 22:00:58',
         ]);
 
-        \App\Models\Sell::create([
+        \App\Models\Sell::factory()->create([
             'product_id' => $product->id,
             'price' => 250.50,
             'created_at' => '2020-05-31 22:00:58',
         ]);
 
-        \App\Models\Sell::create([
+        \App\Models\Sell::factory()->create([
             'product_id' => $product->id,
             'price' => 250.50,
             'created_at' => '2020-02-31 22:00:58',
         ]);
 
-        \App\Models\Sell::create([
+        \App\Models\Sell::factory()->create([
             'product_id' => $product->id,
             'price' => 250.50,
             'created_at' => '2020-06-31 22:00:58',
         ]);
 
-        \App\Models\Sell::create([
+        \App\Models\Sell::factory()->create([
             'product_id' => $product->id,
             'price' => 250.50,
             'created_at' => '2020-10-31 22:00:58',
         ]);
 
-        \App\Models\Sell::create([
+        \App\Models\Sell::factory()->create([
             'product_id' => $product->id,
             'price' => 250.50,
             'created_at' => '2020-12-31 22:00:58',
