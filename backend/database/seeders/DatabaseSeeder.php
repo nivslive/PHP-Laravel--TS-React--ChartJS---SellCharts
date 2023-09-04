@@ -23,26 +23,17 @@ class DatabaseSeeder extends Seeder
             'price' => 214.42,
         ]);
 
+        // TODAY'S SELLS
         \App\Models\Sell::create([
             'product_id' => $product->id,
             'price' => 250.50,
         ]);
 
-
-        $product = \App\Models\Product::factory()->create([ 
-            'name' => 'test',
-            'price' => 214.42,
-        ]);
-
+        // 2022 SELLS
         \App\Models\Sell::create([
             'product_id' => $product->id,
             'price' => 250.50,
             'created_at' => '2022-05-31 22:00:58',
-        ]);
-
-        $product = \App\Models\Product::factory()->create([ 
-            'name' => 'test',
-            'price' => 214.42,
         ]);
 
         \App\Models\Sell::create([
@@ -51,6 +42,8 @@ class DatabaseSeeder extends Seeder
             'created_at' => '2022-04-31 22:00:58',
         ]);
 
+
+        // 2021 SELLS
         \App\Models\Sell::create([
             'product_id' => $product->id,
             'price' => 250.50,
@@ -70,7 +63,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
 
-
+        // SELLS FORECASTS
         \App\Models\SellForecast::create([
             'price' => 250.50,
             'created_at' => '2022-04-31 00:00:00',   
